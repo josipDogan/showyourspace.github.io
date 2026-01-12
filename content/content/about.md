@@ -8,6 +8,7 @@ menus:
     name: About
     weight: 4
 ---
-![pic](../images/about.jpg)
+• architecture • videography • animations🎬We are a film/architecture duo striving to make unique films about architecture.📍 Belgrade 📍 Berlin
+![pic](/images/about.jpg)
 
-Show Your Space is a architecture/filmmaker duo based in Belgrade and Berlin.
+
