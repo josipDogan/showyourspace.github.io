@@ -1,0 +1,161 @@
+{{ define "main" }}
+<section class="video-gallery">
+  <h1>{{ .Title }}</h1>
+  {{ if .Description }}
+  <p class="site-description">{{ .Description }}</p>
+  {{ end }} {{ if site.Data.live_concerts }}
+  <div class="video-grid">
+    {{ range site.Data.live_concerts }}
+    <div class="video-item">
+      <div class="video-wrapper">
+        {{ if eq .platform "youtube" }}
+        <iframe
+          src="https://www.youtube.com/embed/{{ .id }}"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+        >
+        </iframe>
+        {{ else if eq .platform "vimeo" }}
+        <iframe
+          src="https://player.vimeo.com/video/{{ .id }}"
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+        >
+        </iframe>
+        {{ end }}
+      </div>
+      <div class="video-info">
+        <h3>{{ .title }}</h3>
+        <p class="video-description">{{ .description }}</p>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+  {{ else }}
+  <p style="color: red; text-align: center; padding: 2rem">
+    No video data found. Please check /data/live_concerts.yaml exists.
+  </p>
+  {{ end }}
+</section>
+
+<style>
+  .video-gallery {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .video-gallery h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .site-description {
+    text-align: center;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0 auto 3rem;
+    font-style: italic;
+    max-width: 800px;
+    padding: 0 2rem;
+  }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 2.5rem;
+  }
+
+  .video-item {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .video-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    background: #000;
+  }
+
+  .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .video-info {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .video-info h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .video-description {
+    margin: 0;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.4;
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .video-gallery {
+      padding: 1rem;
+    }
+
+    .video-gallery h1 {
+      font-size: 2rem;
+    }
+
+    .site-description {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .video-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .video-info h3 {
+      font-size: 1rem;
+    }
+
+    .video-description {
+      font-size: 0.8rem;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    .video-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
+
+<script src="https://player.vimeo.com/api/player.js"></script>
+{{ end }}
