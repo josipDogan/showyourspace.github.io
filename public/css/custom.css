@@ -1,0 +1,121 @@
+/* ============================================
+   HORIZONTAL MENU IN TOP BAR - MOBILE FRIENDLY
+   ============================================ */
+
+/* Hide hamburger */
+#menu-toggle {
+    display: none !important;
+}
+
+/* Make body layout properly */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Desktop: Fixed header with horizontal menu */
+@media (min-width: 769px) {
+    header {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 100 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 1rem 2rem !important;
+        background: #000 !important;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        height: 60px;
+        box-sizing: border-box;
+    }
+
+    header > a {
+        font-size: 1.2rem;
+        white-space: nowrap;
+    }
+
+    #menu {
+        position: fixed !important;
+        top: 0 !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        z-index: 101 !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        height: 60px;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    #menu > li {
+        display: inline-block !important;
+        margin: 0 1.5rem !important;
+        list-style: none !important;
+    }
+
+    #menu > li a {
+        padding: 0.75rem 1rem;
+        text-decoration: none;
+        display: inline-block;
+        white-space: nowrap;
+    }
+
+    body > main,
+    body > .main,
+    main {
+        padding-top: 80px;
+    }
+}
+
+/* Mobile: Stack menu below title */
+@media (max-width: 768px) {
+    header {
+        position: static !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        padding: 1rem !important;
+        background: #000 !important;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    header > a {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    #menu {
+        position: static !important;
+        transform: none !important;
+        display: flex !important;
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+        width: 100% !important;
+        gap: 0.5rem !important;
+    }
+
+    #menu > li {
+        display: inline-block !important;
+        margin: 0.25rem 0.5rem !important;
+        list-style: none !important;
+    }
+
+    #menu > li a {
+        padding: 0.5rem 0.75rem;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 0.9rem;
+        white-space: nowrap;
+    }
+
+    /* No extra padding needed on mobile */
+    body > main,
+    body > .main,
+    main {
+        padding-top: 0;
+    }
+}
