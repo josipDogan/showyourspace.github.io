@@ -2,7 +2,7 @@ baseURL = "https://www.showyourspace.net/"
 languageCode = "en-us"
 title = "Show Your Space"
 theme = "hugo-theme-gallery"
-copyright = "© {year} Show Your Space"
+copyright = "© 2026 Show Your Space"
 
 [pagination]
   pagerSize = 999999
