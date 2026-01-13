@@ -1,4 +1,4 @@
-baseURL = "https://showyourspace.github.io/"
+baseURL = "https://www.showyourspace.net/"
 languageCode = "en-us"
 title = "Show Your Space"
 theme = "hugo-theme-gallery"
